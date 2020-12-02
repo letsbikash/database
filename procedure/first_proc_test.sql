@@ -76,18 +76,23 @@ DEPTNO
 ;
 
 
-INSERT INTO DEPT_MIN_SAL
+INSERT INTO EMPLOYEE
 (
+      EMPNO,
+      ENAME,
       DEPTNO,
+      DNAME,
       SAL
 )
 SELECT 
-      DEPTNO,
-      MIN(SAL) 
+      A.EMPNO,
+      A.ENAME,
+      B.DEPTNO,
+      B.DNAME,
+      A.SAL
 FROM
-     EMP_WRK
-GROUP BY
-DEPTNO
+     EMP_WRK A
+INNER JOIN DEPT WORK B ON (A.DEPTNO = B.DEPTNO)
 ;
 
 
